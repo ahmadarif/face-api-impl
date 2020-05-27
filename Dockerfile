@@ -5,8 +5,8 @@ FROM node:10-alpine
 RUN apk add --update tzdata
 ENV TZ=Asia/Jakarta
 
-# Install python and extra build
-RUN apk add --no-cache --virtual .build-deps alpine-sdk python \
+# Install python and extra
+RUN apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python
 
 # Create app directory
 WORKDIR /app
@@ -15,7 +15,6 @@ WORKDIR /app
 COPY . /app/
 
 # Install dependency
-RUN npm install \
- && apk del .build-deps
+RUN npm install
 
 CMD ["npm", "run", "start"]
