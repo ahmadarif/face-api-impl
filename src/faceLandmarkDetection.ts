@@ -19,7 +19,6 @@ async function run() {
   console.log(results[0].descriptor)
 
   saveFile(__dirname + '/../out/faceLandmarkDetection.jpg', out.toBuffer('image/jpeg'))
-  console.log('done, saved results to out/faceLandmarkDetection.jpg')
 }
 
 run()
