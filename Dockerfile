@@ -6,9 +6,8 @@ RUN apk add --update tzdata
 ENV TZ=Asia/Jakarta
 
 # Install python and extra
-RUN apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python
+RUN apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python build-base cairo-dev jpeg-dev pango-dev giflib-dev
 RUN npm install --quiet node-gyp -g
-RUN npm --build-from-source install canvas
 
 # Create app directory
 WORKDIR /app
