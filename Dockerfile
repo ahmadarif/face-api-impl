@@ -6,7 +6,7 @@ RUN apk add --update tzdata
 ENV TZ=Asia/Jakarta
 
 # Install python and extra build
-RUN apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python
+RUN apk add --no-cache --virtual .build-deps alpine-sdk python \
 
 # Create app directory
 WORKDIR /app
@@ -15,9 +15,7 @@ WORKDIR /app
 COPY . /app/
 
 # Install dependency
-RUN npm install
-
-# Build the app (transpile from TypeScript to JavaScript)
-RUN npm run build
+RUN npm install \
+ && apk del .build-deps
 
 CMD ["npm", "run", "start"]
