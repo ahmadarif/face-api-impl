@@ -8,6 +8,7 @@ ENV TZ=Asia/Jakarta
 # Install python and extra
 RUN apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python
 RUN npm install --quiet node-gyp -g
+RUN npm --build-from-source install canvas
 
 # Create app directory
 WORKDIR /app
