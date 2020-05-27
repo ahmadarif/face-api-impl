@@ -5,6 +5,9 @@ FROM node:10-alpine
 RUN apk add --update tzdata
 ENV TZ=Asia/Jakarta
 
+# Install python and extra build
+RUN apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python
+
 # Create app directory
 WORKDIR /app
 
