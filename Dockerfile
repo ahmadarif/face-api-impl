@@ -7,7 +7,6 @@ ENV TZ=Asia/Jakarta
 
 # Install python and extra
 RUN apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python build-base cairo-dev jpeg-dev pango-dev giflib-dev
-RUN npm install --quiet node-gyp -g
 
 # Create app directory
 WORKDIR /app
@@ -16,6 +15,6 @@ WORKDIR /app
 COPY . /app/
 
 # Install dependency
-RUN npm install
+RUN npm install --silent
 
 CMD ["npm", "run", "start"]
